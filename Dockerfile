@@ -27,6 +27,11 @@ gpgkey=https://packages.microsoft.com/keys/microsoft.asc' > /etc/yum.repos.d/azu
     #Gruntworks Terragrunt
     && wget https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERS}/terragrunt_linux_amd64 \
     && mv terragrunt_linux_amd64 /usr/bin/terragrunt \
+    #Helm
+    && yum install -y openssl \
+    && curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 \
+    && chmod 700 get_helm.sh \
+    && ./get_helm.sh \
     ## Ensure we can execute the binaries
     && chmod +x /usr/bin/terra* /usr/bin/vault \
     && dnf install -y vim
